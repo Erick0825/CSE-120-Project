@@ -11,7 +11,7 @@ latent_vector2 = []
 # trained on ImageNet dataset
 url = "https://sruhyjfrd6.execute-api.us-east-2.amazonaws.com/image"
 
-with open("random.jpeg", "rb") as imageFile:
+with open("out.jpg", "rb") as imageFile:
     img_string = b64encode(imageFile.read()).decode('utf-8')
 
 data = {"image": img_string}
@@ -25,7 +25,9 @@ else:
     print(req.json()) # failed to get feature vector
 
 
-with open("random.jpeg", "rb") as imageFile:
+a = np.array(latent_vector1)
+
+with open("goodLogo.jpg", "rb") as imageFile:
     img_string = b64encode(imageFile.read()).decode('utf-8')
 
 data = {"image": img_string}
@@ -33,13 +35,13 @@ req = requests.post(url, json=data)
 
 if req.status_code == 200:
     # Get latent vector
-    latent_vector2 = req.json()['body']['image_vector']
+    latent_vector1 = req.json()['body']['image_vector']
 
 else:
     print(req.json()) # failed to get feature vector
 
-b = np.array(latent_vector2)
-a = np.array(latent_vector1)
+
+b = np.array(latent_vector1)
 
 dist = np.sqrt(np.sum(np.square(a-b)))
 print(dist)
