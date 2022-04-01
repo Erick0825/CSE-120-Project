@@ -11,6 +11,7 @@ class vision_system:
         self.goodLogo = image_manip.logo()
         self.inputLogo = image_manip.logo()
         self.feature_vec_manager = image_manip.feature_vector_manager()
+        self.threshold = 5   # mangage threshold for feature detection
 
     # manage good logo
     def set_good_image(self, image_path):
@@ -53,6 +54,9 @@ class vision_system:
 
         self.feature_vec_manager.set_image(image_fi.read())
         self.inputLogo.feature_vector = self.feature_vec_manager.get_feature_vector()
+    
+    def match(self):
+        return self.feature_vec_manager.match(self.goodLogo, self.inputLogo) <= self.threshold
 
 
 
