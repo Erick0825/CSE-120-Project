@@ -16,11 +16,12 @@ button = tkinter.Button(main, text="Scan Logo", highlightbackground='#3E4149')
 button.grid(row=1, column=0)
 button.pack(side='bottom')
 
-exit = tkinter.Button("Would you like to return to the main page? Yes or no\n", highlightbackground='#3E4149')
+exit = tkinter.Button(text="Would you like to return to the main page? Yes or no\n", highlightbackground='#3E4149')
 exit = exit.lower()
 
 if exit == "yes" or "y":
     player = False
 else:
-    main() 
+    main()
+mainloop()
  
