@@ -35,5 +35,5 @@ class feature_vector_manager:
 
 
     # compute similarity between two feature vectors
-    def match(a, b):
+    def match(self, a, b):
         return np.sqrt(np.sum(np.square(a-b)))

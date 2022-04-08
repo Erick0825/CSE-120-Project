@@ -56,7 +56,7 @@ class vision_system:
         self.inputLogo.feature_vector = self.feature_vec_manager.get_feature_vector()
     
     def match(self):
-        return self.feature_vec_manager.match(self.goodLogo, self.inputLogo) <= self.threshold
+        return self.feature_vec_manager.match(self.goodLogo.feature_vector, self.inputLogo.feature_vector)
 
 
 
