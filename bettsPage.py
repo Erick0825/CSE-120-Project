@@ -11,12 +11,10 @@ setting background: bg=""
 set foreground: fg = ""
 
 """
-root = Tk()
-def quit_window():
-    root.destroy()
 
+root= Tk()
 def initialWindow():
-    # root = Tk()
+    
     root.geometry("1920x1080")
     root['background'] = '#DFDDD1'
     root.title("Welcome Page")
@@ -31,8 +29,8 @@ def initialWindow():
 
     button2 = tk.Button(root, text="Use a different Logo", font=('Sans',22,BOLD), padx= 20,pady=20)
     button2.place(relx= 0.47, rely = 0.8, anchor= NE, )
-
+    
+initialWindow()
 root.mainloop()
-
 
 
