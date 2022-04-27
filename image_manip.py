@@ -10,17 +10,11 @@ class logo:
     feature_vector = []
 
 class feature_vector_manager:
-    # feature vector for an image from the resnet50 model
+    # feature vector for an image from the resnet152 model
     # trained on ImageNet dataset
         
-    # # set an image
-    # def set_image(self, image_bytes):
-    #     self.img_string = b64encode(image_bytes).decode('utf-8')
-    #     self.data = {"image": self.img_string}
-
-    # call api with the current image and return feature vector
-    def get_feature_vector(self):
-        return model.get_vector("out.jpg")
+    def get_feature_vector(self, image_path):
+        return model.get_vector(image_path)
 
     # compute similarity between two feature vectors
     def match(self, a, b):
