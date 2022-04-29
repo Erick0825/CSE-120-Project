@@ -39,7 +39,7 @@ def nextPage():
 
 def prevPage():
     ws.destroy()
-    import startPage
+    import start_page
 
 
 adhar = Label(
