@@ -1,14 +1,49 @@
 import tkinter
+import tkinter as tk
 from tkinter import *
-from turtle import exitonclick
+from tkinter.font import BOLD
+from setuptools import Command
+# import vision_system
 
-main = Tk()
-main.geometry("400x200")
-main['background'] = '#8a0602'
+win = Tk()
+# command to go to camera page
+def toCam():
+    win.quit()
 
-main.title("Result")
+# command to go to start page
+def toStart():
+    win.quit()
 
-if bool(True):
-    label = tkinter.Label(text="Pass", background="#00FF00")
-else:
-    label = tkinter.Label(text="Fail", background="#FF0000")
+# window created
+def result():
+    # window will display fail if vision_system passes "fail" result
+    if bool(True):
+        win.geometry("700x350")
+        # red
+        win['background'] = '#FF0000'
+        win.title("Result")
+        msg = Label(win, text="Fail", font=('Sans', 72, BOLD))
+        msg.place(relx=0.5, rely=0.4, anchor=CENTER)
+        # camera page button
+        camera = tk.Button(win, text="Camera", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
+        camera.place(relx=0.3, rely=0.7, anchor=CENTER)
+        # start page button
+        start = tk.Button(win, text="Home", font=('Sans', 22, BOLD), padx=50, pady=20, command=toStart)
+        start.place(relx=0.7, rely=0.7, anchor=CENTER)
+    # window will display pass if vision_system passes "pass" result
+    else:
+        win.geometry("700x350")
+        # green
+        win['background'] = '#00FF00'
+        win.title("Result")
+        msg = Label(win, text="Pass", font=('Sans', 72, BOLD))
+        msg.place(relx=0.5, rely=0.4, anchor=CENTER)
+
+        camera = tk.Button(win, text="Scan", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
+        camera.place(relx=0.3, rely=0.7, anchor=CENTER)
+
+        start = tk.Button(win, text="Home", font=('Sans', 22, BOLD), padx=50, pady=20, command=toStart)
+        start.place(relx=0.7, rely=0.7, anchor=CENTER)
+
+result()
+win.mainloop()
