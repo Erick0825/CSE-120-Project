@@ -37,6 +37,5 @@ for spring_number in order:
             count+= 1
             if matched == False:
                 correctly_guessed += 1
-
             
 print(correctly_guessed/count)

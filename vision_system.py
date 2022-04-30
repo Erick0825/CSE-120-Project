@@ -52,10 +52,10 @@ class vision_system:
         # return distance
 
     def match(self):
-        # check1 = self.feature_vec_manager.match(self.templateLogo.feature_vector, self.inputLogo.feature_vector)# < 8
+        check1 = self.feature_vec_manager.match(self.templateLogo.feature_vector, self.inputLogo.feature_vector)
 
         # check1 =  self.brightness_difference()
-        check1 = self.template_match
+        # check1 = self.template_match
         return check1
 
 
