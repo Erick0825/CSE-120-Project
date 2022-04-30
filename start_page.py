@@ -19,7 +19,7 @@ root = Tk()
 
 
 def startwindow():
-    root.geometry("1920x1080")
+    root.geometry("600x600")
     root['background'] = '#DFDDD1'
     root.title("Welcome Page")
     # set the business logo on title
