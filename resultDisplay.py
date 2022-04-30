@@ -1,19 +1,28 @@
 import tkinter
 from tkinter import *
-from turtle import exitonclick
-from vision_system import vision_system
+import tkinter as tk
+from tkinter.font import BOLD
+# import vision_system
 
-class resultDisplay:
-    def _init_(self):
-        main.geometry("400x200")
-        main['background'] = '#8a0602'
-        main.title("Result")
+win = Tk()
+# window created
+def thisWindow():
+    # window will display fail if vision_system passes "fail" result
+    if bool(True):
+        win.geometry("700x350")
+        # red
+        win['background'] = '#FF0000'
+        win.title("Result")
+        msg = Label(win, text="Fail", font=('Sans', 72, BOLD))
+        msg.place(relx=0.5, rely=0.5, anchor=CENTER)
+    # window will display pass if vision_system passes "pass" result
+    else:
+        win.geometry("700x350")
+        # green
+        win['background'] = '#00FF00'
+        win.title("Result")
+        msg = Label(win, text="Pass", font=('Sans', 72, BOLD))
+        msg.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-    def display(self):
-        if vision_system.match():
-            label = tkinter.Label(text="Pass", background="#00FF00")
-        else:
-            label = tkinter.Label(text="Fail", background="#FF0000")
-
-main = Tk()
-main.mainloop()
+thisWindow()
+win.mainloop()
