@@ -14,12 +14,14 @@ from setuptools import Command
 def quitpage():
     root.quit()
 
-
+def go_to_next():
+    root.destroy()
+    import Scan_logo_page
 root = Tk()
 
 
 def startwindow():
-    root.geometry("600x600")
+    root.geometry("1920x1080")
     root['background'] = '#DFDDD1'
     root.title("Welcome Page")
     # set the business logo on title
@@ -28,7 +30,7 @@ def startwindow():
     msg = Label(root, text="Hello, Welcome to Bett's Logo Detector", font=('Sans', 26, BOLD))
     msg.place(relx=0.5, rely=0.2, anchor=CENTER)
 
-    start = tk.Button(root, text="Start", font=('Sans', 22, BOLD), padx=50, pady=20, command=quitpage)
+    start = tk.Button(root, text="Start", font=('Sans', 22, BOLD), padx=50, pady=20, command=go_to_next)
 
     start.place(relx=0.5, rely=0.7, anchor=CENTER)
 

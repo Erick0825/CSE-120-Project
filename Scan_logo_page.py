@@ -9,8 +9,9 @@ import time
 
 
 ws = Tk()
-ws.geometry('400x200') 
 ws.title("Betts Company")
+ws.geometry("1920x1080")
+ws['background'] = '#DFDDD1'
 
 def open_file():
     file_path = askopenfile(mode='r', filetypes=[('Image Files', '*jpeg')])
