@@ -2,61 +2,60 @@ from skimage.util import img_as_float
 from skimage import io
 import numpy as np
 import matplotlib.pyplot as plt
+import cv2
+import numpy as np
 
 import image_manip
-import imageSeg
 
 class vision_system:
     def __init__(self):
-        self.goodLogo = image_manip.logo()
+        self.templateLogo = image_manip.logo()
         self.inputLogo = image_manip.logo()
         self.feature_vec_manager = image_manip.feature_vector_manager()
-        self.threshold = 5   # mangage threshold for feature detection
+        self.method = eval('cv2.TM_CCOEFF')
 
     # manage good logo
     def set_good_image(self, image_path):
-        self.goodLogo.original_image = img_as_float(io.imread(image_path))
-    
-    def isolate_good_image_logo(self):
-        self.goodLogo.isolated_logo = imageSeg.image_segmentation(self.goodLogo.original_image)
-
-    def get_good_image_features(self):
-        fig = plt.figure("Superpixels segments" )
-        ax = fig.add_subplot(1, 1, 1)
-        ax.imshow(self.goodLogo.isolated_logo)
-        plt.axis("off")
-        plt.savefig("out.jpg", transparent=True, bbox_inches='tight', pad_inches=-0.1)
-        # save and then open image to go around problem of 
-        # the isolated_logo being in the type of floats
-        # which is too big for api to handle
-        image_fi = open("out.jpg", "rb")
-
-        self.feature_vec_manager.set_image(image_fi.read())
-        self.goodLogo.feature_vector = self.feature_vec_manager.get_feature_vector()
+        self.templateLogo.original_image = cv2.imread(image_path, 0)
+        self.w, self.h = self.templateLogo.original_image.shape[::-1]
+        
+        self.templateLogo.feature_vector = self.feature_vec_manager.get_feature_vector(image_path)
+        self.gray1 = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_RGB2GRAY)
 
     # manage input logo
     def set_input_image(self, image_path):
-        self.inputLogo.original_image = img_as_float(io.imread(image_path))
-    
-    def isolate_input_image_logo(self):
-        self.inputLogo.isolated_logo = imageSeg.image_segmentation(self.inputLogo.original_image)
+        self.inputLogo.original_image = cv2.imread(image_path, 0)
 
-    def get_good_input_features(self):
-        fig = plt.figure("Superpixels segments" )
-        ax = fig.add_subplot(1, 1, 1)
-        ax.imshow(self.inputLogo.isolated_logo)
-        plt.axis("off")
-        plt.savefig("out.jpg", transparent=True, bbox_inches='tight', pad_inches=-0.1)
-        # save and then open image to go around problem of 
-        # the isolated_logo being in the type of floats
-        # which is too big for api to handle
-        image_fi = open("out.jpg", "rb")
+        # Apply template Matching and crop image down
+        res = cv2.matchTemplate(self.inputLogo.original_image, self.templateLogo.original_image, self.method)
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        top_left = max_loc
+        bottom_right = (top_left[0] + self.w, top_left[1] + self.h)
+        crop_img = self.inputLogo.original_image [top_left[1]:bottom_right[1], top_left[0]:bottom_right[0]]
+        cv2.imwrite("out.jpg", crop_img)
 
-        self.feature_vec_manager.set_image(image_fi.read())
-        self.inputLogo.feature_vector = self.feature_vec_manager.get_feature_vector()
-    
+        self.template_match = max_val
+
+        self.inputLogo.feature_vector = self.feature_vec_manager.get_feature_vector("out.jpg")
+
+        self.gray2 = cv2.cvtColor(cv2.imread("out.jpg"), cv2.COLOR_RGB2GRAY)
+
+    def brightness_difference(self):
+        h1 = cv2.calcHist([self.gray1], [0], None, [256], [0.0,255.0])
+        h2 = cv2.calcHist([self.gray2], [0], None, [256], [0.0,255.0])
+        return cv2.compareHist(h1,h2,method=cv2.HISTCMP_BHATTACHARYYA)
+        # distance = 0
+        # for i in range(len(self.gray1)):
+        #     for j in range(len(self.gray1)):
+        #         distance += pow((self.gray1[i][j]-self.gray2[i][j]),2)
+        # distance = np.sqrt(distance)
+        # return distance
+
     def match(self):
-        return self.feature_vec_manager.match(self.goodLogo, self.inputLogo) <= self.threshold
+        check1 = self.feature_vec_manager.match(self.templateLogo.feature_vector, self.inputLogo.feature_vector)
 
+        # check1 =  self.brightness_difference()
+        # check1 = self.template_match
+        return check1
 
 

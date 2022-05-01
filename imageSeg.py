@@ -37,4 +37,3 @@ def image_segmentation(image):
     # # save image
     # plt.savefig("out.jpg", transparent=True, bbox_inches='tight', pad_inches=-0.1)
     return image
-
