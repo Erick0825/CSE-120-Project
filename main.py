@@ -24,7 +24,7 @@ for spring_number in order:
     for i in range(1, 5):
         print("image "+str(i))
         vision.set_input_image("images/Good_Images/Spring" + str(spring_number) + "_" + str(i) + ".jpeg")
-        matched = minRange <= vision.match() <= maxRange
+        matched = minRange <= vision.match() # <= maxRange
         print("good image: " + str(matched))
 
         count+= 1
@@ -32,7 +32,7 @@ for spring_number in order:
             correctly_guessed += 1
         for bad_number in range(5):
             vision.set_input_image('images/Bad_Images/Spring' + str(spring_number) + '_' + str(i) + '_bad' + str(bad_number) + '.jpeg')
-            matched = minRange <= vision.match() <= maxRange
+            matched = minRange <= vision.match() # <= maxRange
             print(matched)
             count+= 1
             if matched == False:
