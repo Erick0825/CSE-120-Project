@@ -27,13 +27,13 @@ def uploadFiles():
         length=300, 
         mode='determinate'
         )
-    pb1.grid(row=4, columnspan=3, pady=20)
+    pb1.place(relx=0.5, rely=0.4, anchor=CENTER)
     for i in range(5):
         ws.update_idletasks()
         pb1['value'] += 20
         time.sleep(1)
     pb1.destroy()
-    Label(ws, text='File Uploaded Successfully!', foreground='green').grid(row=4, columnspan=3, pady=10)
+    tkinter.Label(ws, text='File Uploaded Successfully!', font=('Sans', 24, BOLD), foreground='green', bg= '#DFDDD1').place(relx=0.5, rely=0.3, anchor=CENTER)
 
 def nextPage():
     ws.destroy()
