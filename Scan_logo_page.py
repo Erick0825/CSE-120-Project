@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import *
-from turtle import exitonclick
+from tkinter.font import BOLD
+from turtle import bgcolor, exitonclick
 import os
 from tkinter.ttk import *
 from tkinter.filedialog import askopenfile 
@@ -10,7 +11,7 @@ import time
 
 ws = Tk()
 ws.title("Betts Company")
-ws.geometry("1920x1080")
+ws.geometry("1000x900")
 ws['background'] = '#DFDDD1'
 
 def open_file():
@@ -45,47 +46,52 @@ def prevPage():
 def kill():
     exit()
 
-adhar = Label(
+adhar = tkinter.Label(
     ws, 
-    text='Upload logo in jpg format '
-    )
-adhar.grid(row=0, column=0, padx=10)
+    text='Upload logo in jpg format ',
+    font=('Sans', 30,BOLD)
+    ,foreground='black',
+    bg= '#DFDDD1'
+)
+adhar.place(relx=0.5, rely=0.2, anchor=CENTER)
 
-adharbtn = Button(
+adharbtn = tkinter.Button(
     ws, 
-    text ='Choose File', 
+    text ='Choose File', font=('Sans', 18, BOLD), padx=10, pady=10,
     command = lambda:open_file()
     ) 
-adharbtn.grid(row=0, column=1)
+adharbtn.place(relx=0.6, rely=0.5, anchor=CENTER)
 
 
-upld = Button(
+upld = tkinter.Button(
     ws, 
-    text='Upload Files', 
+    text='Upload Files', font=('Sans', 18, BOLD), padx=10, pady=10,
     command=uploadFiles
     )
-upld.grid(row=3, columnspan=3, pady=10)
+upld.place(relx=0.6, rely=0.6, anchor=CENTER)
 
-PrevPage = Button(
+PrevPage = tkinter.Button(
     ws, 
-    text="Previous Page", 
+    text="Previous Page", font=('Sans', 18, BOLD), padx=10, pady=10,
     command=prevPage
     )
-PrevPage.grid(row=5, column=0, pady=10)
+PrevPage.place(relx=0.4, rely=0.6, anchor=CENTER)
 
-NextPage = Button(
+NextPage = tkinter.Button(
     ws, 
-    text="Next Page", 
+    text="Next Page", font=('Sans', 18, BOLD), padx=10, pady=10,
+  
     command=nextPage
     )
-NextPage.grid(row=5, column=1, pady=10)
+NextPage.place(relx=0.4, rely=0.5, anchor=CENTER)
 
-exist=Button(
+exist=tkinter.Button(
     ws,
-    text='Exit',
+    text='Exit', font=('Sans', 20, BOLD), padx=20, pady=10,
+    
     command=kill
     )
-exist.grid(row=5, columnspan=3, pady=10)
+exist.place(relx=0.5, rely=0.9, anchor=CENTER)
 
 
 ws.mainloop()

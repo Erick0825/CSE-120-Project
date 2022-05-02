@@ -18,7 +18,7 @@ def toStart():
 def result():
     # window will display fail if vision_system passes "fail" result
     if bool(True):
-        win.geometry("700x350")
+        win.geometry("1000x900")
         # red
         win['background'] = '#FF0000'
         win.title("Result")

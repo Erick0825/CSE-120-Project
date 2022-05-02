@@ -5,7 +5,7 @@ from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
 
 my_w = tk.Tk()
-my_w.geometry("1920x1080")  # Size of the window 
+my_w.geometry("1000x900")  # Size of the window 
 my_w.title('Multiple Image Upload')
 my_w['background'] = '#DFDDD1'
 my_font1=('Sans', 22, 'bold')

@@ -21,12 +21,11 @@ root = Tk()
 
 
 def startwindow():   
-    root.geometry("1920x1080")
+    root.geometry("1000x900")
     root['background'] = '#DFDDD1'
     
-    root.title("Welcome Page")
-    # set the business logo on title
-    root.iconbitmap('out.jpg')
+    root.title("Welcome")
+
     # def initClick(): <- how to create class to build functions for tkinter
     msg = Label(root, text="Hello, Welcome to Bett's Logo Detector!", font=('Sans', 26, BOLD),fg='black')
     msg.config(bg= '#DFDDD1')
