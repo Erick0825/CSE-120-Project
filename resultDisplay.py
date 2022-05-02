@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter.font import BOLD
 from setuptools import Command
 # import vision_system
-
+import start_page
 
 def resultdisplay(vision):
     win = Tk()
@@ -15,6 +15,7 @@ def resultdisplay(vision):
     # command to go to start page
     def toStart():
         win.quit()
+        start_page.startpage(vision)
 
     # window created
     def result(detection_result):
