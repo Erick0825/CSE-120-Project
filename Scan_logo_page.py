@@ -78,12 +78,5 @@ NextPage = Button(
     )
 NextPage.grid(row=5, column=1, pady=10)
 
-exist=Button(
-    ws,
-    text='Exit',
-    command=exitonclick
-    )
-exist.grid(row=5, columnspan=3, pady=10)
-
 
 ws.mainloop()
