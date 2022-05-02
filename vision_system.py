@@ -8,11 +8,13 @@ import numpy as np
 import image_manip
 
 class vision_system:
+    threshold = 0
     def __init__(self):
         self.templateLogo = image_manip.logo()
         self.inputLogo = image_manip.logo()
         self.feature_vec_manager = image_manip.feature_vector_manager()
         self.method = eval('cv2.TM_CCOEFF')
+        
 
     # manage good logo
     def set_good_image(self, image_path):

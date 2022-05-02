@@ -6,92 +6,94 @@ import os
 from tkinter.ttk import *
 from tkinter.filedialog import askopenfile 
 import time
+import resultDisplay
+import start_page
+import confirm
 
+def scanlogopage(vision):
+    ws = Tk()
+    ws.title("Betts Company")
+    ws.geometry("1000x900")
+    ws['background'] = '#DFDDD1'
 
+    def open_file():
+        file_path = askopenfile(mode='r', filetypes=[('Image Files', '*jpeg')])
+        if file_path is not None:
+            pass
 
-ws = Tk()
-ws.title("Betts Company")
-ws.geometry("1000x900")
-ws['background'] = '#DFDDD1'
+    def uploadFiles():
+        pb1 = Progressbar(
+            ws, 
+            orient=HORIZONTAL, 
+            length=300, 
+            mode='determinate'
+            )
+        pb1.place(relx=0.5, rely=0.4, anchor=CENTER)
+        for i in range(5):
+            ws.update_idletasks()
+            pb1['value'] += 20
+            time.sleep(1)
+        pb1.destroy()
+        tkinter.Label(ws, text='File Uploaded Successfully!', font=('Sans', 24, BOLD), foreground='green', bg= '#DFDDD1').place(relx=0.5, rely=0.3, anchor=CENTER)
 
-def open_file():
-    file_path = askopenfile(mode='r', filetypes=[('Image Files', '*jpeg')])
-    if file_path is not None:
-        pass
+    def nextPage():
+        ws.destroy()
+        confirm.confirmpage(vision)
+        # resultDisplay.resultdisplay(vision)
 
+    def prevPage():
+        ws.destroy()
+        start_page.startpage(vision)
 
-def uploadFiles():
-    pb1 = Progressbar(
+    def kill():
+        exit()
+
+    adhar = tkinter.Label(
         ws, 
-        orient=HORIZONTAL, 
-        length=300, 
-        mode='determinate'
+        text='Upload logo in jpg format ',
+        font=('Sans', 30,BOLD)
+        ,foreground='black',
+        bg= '#DFDDD1'
+    )
+    adhar.place(relx=0.5, rely=0.2, anchor=CENTER)
+
+    adharbtn = tkinter.Button(
+        ws, 
+        text ='Choose File', font=('Sans', 18, BOLD), padx=10, pady=10,
+        command = lambda:open_file()
+        ) 
+    adharbtn.place(relx=0.6, rely=0.5, anchor=CENTER)
+
+
+    upld = tkinter.Button(
+        ws, 
+        text='Upload Files', font=('Sans', 18, BOLD), padx=10, pady=10,
+        command=uploadFiles
         )
-    pb1.place(relx=0.5, rely=0.4, anchor=CENTER)
-    for i in range(5):
-        ws.update_idletasks()
-        pb1['value'] += 20
-        time.sleep(1)
-    pb1.destroy()
-    tkinter.Label(ws, text='File Uploaded Successfully!', font=('Sans', 24, BOLD), foreground='green', bg= '#DFDDD1').place(relx=0.5, rely=0.3, anchor=CENTER)
+    upld.place(relx=0.6, rely=0.6, anchor=CENTER)
 
-def nextPage():
-    ws.destroy()
-    import resultDisplay
+    PrevPage = tkinter.Button(
+        ws, 
+        text="Previous Page", font=('Sans', 18, BOLD), padx=10, pady=10,
+        command=prevPage
+        )
+    PrevPage.place(relx=0.4, rely=0.6, anchor=CENTER)
 
-def prevPage():
-    ws.destroy()
-    import start_page
-
-def kill():
-    exit()
-
-adhar = tkinter.Label(
-    ws, 
-    text='Upload logo in jpg format ',
-    font=('Sans', 30,BOLD)
-    ,foreground='black',
-    bg= '#DFDDD1'
-)
-adhar.place(relx=0.5, rely=0.2, anchor=CENTER)
-
-adharbtn = tkinter.Button(
-    ws, 
-    text ='Choose File', font=('Sans', 18, BOLD), padx=10, pady=10,
-    command = lambda:open_file()
-    ) 
-adharbtn.place(relx=0.6, rely=0.5, anchor=CENTER)
-
-
-upld = tkinter.Button(
-    ws, 
-    text='Upload Files', font=('Sans', 18, BOLD), padx=10, pady=10,
-    command=uploadFiles
-    )
-upld.place(relx=0.6, rely=0.6, anchor=CENTER)
-
-PrevPage = tkinter.Button(
-    ws, 
-    text="Previous Page", font=('Sans', 18, BOLD), padx=10, pady=10,
-    command=prevPage
-    )
-PrevPage.place(relx=0.4, rely=0.6, anchor=CENTER)
-
-NextPage = tkinter.Button(
-    ws, 
-    text="Next Page", font=('Sans', 18, BOLD), padx=10, pady=10,
-  
-    command=nextPage
-    )
-NextPage.place(relx=0.4, rely=0.5, anchor=CENTER)
-
-exist=tkinter.Button(
-    ws,
-    text='Exit', font=('Sans', 20, BOLD), padx=20, pady=10,
+    NextPage = tkinter.Button(
+        ws, 
+        text="Next Page", font=('Sans', 18, BOLD), padx=10, pady=10,
     
-    command=kill
-    )
-exist.place(relx=0.5, rely=0.9, anchor=CENTER)
+        command=nextPage
+        )
+    NextPage.place(relx=0.4, rely=0.5, anchor=CENTER)
+
+    exist=tkinter.Button(
+        ws,
+        text='Exit', font=('Sans', 20, BOLD), padx=20, pady=10,
+        
+        command=kill
+        )
+    exist.place(relx=0.5, rely=0.9, anchor=CENTER)
 
 
-ws.mainloop()
+    ws.mainloop()
