@@ -2,12 +2,9 @@ from logging import root
 from tkinter import *
 import tkinter as tk
 from tkinter.font import BOLD
-from PIL import ImageTk, Image
 from setuptools import Command
 
 
-# from turtle import position
-# import Scan logo page.py
 # to run in terminal go to CSE120 directory and call python3 bettsPage.py
 
 # this function closes the window, if added in button with command= it will close window after closing
