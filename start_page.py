@@ -3,7 +3,7 @@ from tkinter import *
 import tkinter as tk
 from tkinter.font import BOLD
 from setuptools import Command
-import Scan_logo_page
+import template_input
 
 # to run in terminal go to CSE120 directory and call python3 bettsPage.py
 
@@ -14,7 +14,7 @@ def startpage(vision):
 
     def go_to_next():
         root.destroy()
-        Scan_logo_page.scanlogopage(vision)
+        template_input.templateinput(vision)
     root = Tk()
 
 

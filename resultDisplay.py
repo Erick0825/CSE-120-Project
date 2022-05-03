@@ -5,16 +5,18 @@ from tkinter.font import BOLD
 from setuptools import Command
 # import vision_system
 import start_page
+import Scan_logo_page
 
 def resultdisplay(vision):
     win = Tk()
     # command to go to camera page
     def toCam():
-        win.quit()
+        win.destroy()
+        Scan_logo_page.scanlogopage(vision)
 
     # command to go to start page
     def toStart():
-        win.quit()
+        win.destroy()
         start_page.startpage(vision)
 
     # window created
@@ -28,7 +30,7 @@ def resultdisplay(vision):
             msg = Label(win, text="Fail", font=('Sans', 72, BOLD))
             msg.place(relx=0.5, rely=0.4, anchor=CENTER)
             # camera page button
-            camera = tk.Button(win, text="Camera", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
+            camera = tk.Button(win, text="Scan Another Image", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
             camera.place(relx=0.3, rely=0.7, anchor=CENTER)
             # start page button
             start = tk.Button(win, text="Home", font=('Sans', 22, BOLD), padx=50, pady=20, command=toStart)
@@ -42,7 +44,7 @@ def resultdisplay(vision):
             msg = Label(win, text="Pass", font=('Sans', 72, BOLD))
             msg.place(relx=0.5, rely=0.4, anchor=CENTER)
 
-            camera = tk.Button(win, text="Scan", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
+            camera = tk.Button(win, text="Scan Another Image", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
             camera.place(relx=0.3, rely=0.7, anchor=CENTER)
 
             start = tk.Button(win, text="Home", font=('Sans', 22, BOLD), padx=50, pady=20, command=toStart)
