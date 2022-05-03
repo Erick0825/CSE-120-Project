@@ -50,5 +50,5 @@ def resultdisplay(vision):
             start = tk.Button(win, text="Home", font=('Sans', 22, BOLD), padx=50, pady=20, command=toStart)
             start.place(relx=0.7, rely=0.7, anchor=CENTER)
 
-    result(vision.threshold <= vision.match())
+    result(not (vision.threshold <= vision.match()))
     win.mainloop()
