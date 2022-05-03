@@ -9,21 +9,17 @@ from tkinter.font import BOLD
 import tkinter as tk
 from setuptools import Command
 #below is for image display (not sure if it works)
-#from PIL import ImageTk, Image
+from PIL import ImageTk, Image
 import Scan_logo_page
 import resultDisplay
 
-def confirmpage(vision):
+def confirmpage(vision, filepath):
     root = Tk()
     root.title("Confirmation Page")
     root.geometry("1920x1080")
     root['background'] = '#DFDDD1'
-
-    #also for image display(not sure if it works)
-    #path = uploadFiles()
-    #img = ImageTk.PhotoImage(Image.open(path))
-    #panel = tk.Label(window, image = img)
-    #panel.pack(side = "bottom", fill = "both", expand = "yes")
+    
+    print(filepath)
 
 
     # change imports in the two def to adjust

@@ -4,7 +4,7 @@ from tkinter.font import BOLD
 from turtle import bgcolor, exitonclick
 import os
 from tkinter.ttk import *
-from tkinter.filedialog import askopenfile 
+from tkinter.filedialog import askopenfilename 
 import time
 import resultDisplay
 import start_page
@@ -15,11 +15,11 @@ def scanlogopage(vision):
     ws.title("Betts Company")
     ws.geometry("1000x900")
     ws['background'] = '#DFDDD1'
-
+    file_path = ""
     def open_file():
-        file_path = askopenfile(mode='r', filetypes=[('Image Files', '*jpeg')])
-        if file_path is not None:
-            pass
+        file_path = askopenfilename(multiple=False, filetypes=[('Jpg Files', '*.jpg'),('PNG Files','*.png'), ('Jpeg Files','*.jpeg')])
+        # print(file_path)
+        vision.set_input_image(file_path)
 
     def uploadFiles():
         pb1 = Progressbar(
@@ -38,7 +38,7 @@ def scanlogopage(vision):
 
     def nextPage():
         ws.destroy()
-        confirm.confirmpage(vision)
+        confirm.confirmpage(vision, file_path)
         # resultDisplay.resultdisplay(vision)
 
     def prevPage():

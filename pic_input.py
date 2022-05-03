@@ -32,7 +32,11 @@ def picinput(vision):
         filename = tk.filedialog.askopenfilename(multiple=True,filetypes=f_types)
         col=1 # start from column 1
         row=3 # start from row 3 
+        
+        minThresh = float("inf")
         for f in filename:
+            vision.set_input_image(f)
+            minThresh = min(minThresh, vision.match())
             img=Image.open(f) # read the image file
             img=img.resize((100,100)) # new width & height
             img=ImageTk.PhotoImage(img)
@@ -44,5 +48,7 @@ def picinput(vision):
                 row=row+1
                 col=1   
             else:       # within the same row 
-                col=col+1 # increase to next column                 
+                col=col+1 # increase to next column    
+        vision.threshold = minThresh
+
     my_w.mainloop()  # Keep the window open
