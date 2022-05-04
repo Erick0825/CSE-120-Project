@@ -8,9 +8,9 @@ my_w = Tk()
 my_w.title("Betts Company")
 my_w.geometry("1000x900")
 my_w['background'] = '#DFDDD1'
-my_font1=('times', 18, 'bold')
-l1 = tk.Label(my_w,text='Upload Files & display',width=30,font=my_font1)  
-l1.grid(row=1,column=1,columnspan=4)
+my_font1=('Sans', 18, 'bold')
+l1 = tk.Label(my_w,text='Upload Files & display',width=30,font=my_font1,bg='#DFDDD1')  
+l1.place(relx=0.5, rely=0.05, anchor=CENTER)
 b1 = tk.Button(my_w, text='Upload Files',font=('Sans', 18, 'bold'), padx=10, pady=10, 
 command = lambda:upload_file())
 b1.place(relx=0.4, rely=0.95, anchor=CENTER)
