@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
-from tkinter.filedialog import askopenfile
+from tkinter.filedialog import askopenfilename
 from PIL import Image, ImageTk
 import pic_input
 
@@ -21,7 +21,8 @@ def templateinput(vision):
     def upload_file():
         f_types = [('Jpg Files', '*.jpg'),
         ('PNG Files','*.png'), ('Jpeg Files','*.jpeg')]   # type of files to select 
-        filename = askopenfile(multiple=False,filetypes=f_types)
+        filename = askopenfilename(multiple=False,filetypes=f_types)
+        print(filename)
         vision.set_good_image(filename)  
 
     l1 = tk.Label(my_w,text='Upload Template Image',width=30,font=my_font1,bg= '#DFDDD1') 

@@ -42,8 +42,8 @@ def scanlogopage(vision):
     
     def nextPage():
         ws.destroy()
-        confirm.confirmpage(vision, file_path)
-        # resultDisplay.resultdisplay(vision)
+        # confirm.confirmpage(vision, file_path)
+        resultDisplay.resultdisplay(vision)
     
     def prevPage():
         ws.destroy()

@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
-from tkinter.filedialog import askopenfile
+from tkinter.filedialog import askopenfilename
 from PIL import Image, ImageTk
 import Scan_logo_page
 
@@ -29,7 +29,7 @@ def picinput(vision):
     def upload_file():
         f_types = [('Jpg Files', '*.jpg'),
         ('PNG Files','*.png'), ('Jpeg Files','*.jpeg')]   # type of files to select 
-        filename = askopenfile(multiple=True,filetypes=f_types)
+        filename = askopenfilename(multiple=True,filetypes=f_types)
         col=1 # start from column 1
         row=3 # start from row 3 
         
