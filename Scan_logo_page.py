@@ -9,7 +9,6 @@ import time
 import resultDisplay
 import start_page
 import confirm
-from PIL import Image, ImageTk
 
 
 def scanlogopage(vision):
@@ -20,10 +19,10 @@ def scanlogopage(vision):
     file_path = ""
     
     def open_file():
-        file_w = askopenfilename(multiple=False,
-                                 filetypes=[('Jpg Files', '*.jpg'), ('PNG Files', '*.png'), ('Jpeg Files', '*.jpeg')])
-        # print(file_w)
-        vision.set_input_image(file_w)
+        file_path = askopenfilename(multiple=False, filetypes=[('Jpg Files', '*.jpg'), ('PNG Files', '*.png'),
+                                                               ('Jpeg Files', '*.jpeg')])
+        # print(file_path)
+        vision.set_input_image(file_path)
     
     def uploadFiles():
         pb1 = Progressbar(
@@ -40,22 +39,6 @@ def scanlogopage(vision):
         pb1.destroy()
         tkinter.Label(ws, text='File Uploaded Successfully!', font=('Sans', 24, BOLD), foreground='green',
                       bg='#DFDDD1').place(relx=0.5, rely=0.3, anchor=CENTER)
-        col = 1  # start from column 1
-        row = 3  # start from row 3
-    
-    for f in file_path:
-        img = Image.open(f)  # read the image file
-        img = img.resize((200, 200))  # new width & height
-        img = ImageTk.PhotoImage(img)
-        e1 = tkinter.Label(ws)
-        e1.grid(row=row, column=col)
-        e1.image = img
-        e1['image'] = img  # garbage collection
-        if (col == 3):  # start new line after third column
-            row = row + 1  # start wtih next row
-            col = 1  # start with first column
-        else:  # within the same row
-            col = col + 1  # increase to next column
     
     def nextPage():
         ws.destroy()
