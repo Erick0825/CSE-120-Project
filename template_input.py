@@ -21,9 +21,7 @@ def templateinput(vision):
     def upload_file():
         f_types = [('Jpg Files', '*.jpg'),
         ('PNG Files','*.png'), ('Jpeg Files','*.jpeg')]   # type of files to select 
-        filename = tk.filedialog.askopenfilename(multiple=False,filetypes=f_types)
-        col=1 # start from column 1
-        row=3 # start from row 3 
+        filename = askopenfile(multiple=False,filetypes=f_types)
         vision.set_good_image(filename)  
 
     l1 = tk.Label(my_w,text='Upload Template Image',width=30,font=my_font1,bg= '#DFDDD1') 

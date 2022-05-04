@@ -29,7 +29,7 @@ def picinput(vision):
     def upload_file():
         f_types = [('Jpg Files', '*.jpg'),
         ('PNG Files','*.png'), ('Jpeg Files','*.jpeg')]   # type of files to select 
-        filename = tk.filedialog.askopenfilename(multiple=True,filetypes=f_types)
+        filename = askopenfile(multiple=True,filetypes=f_types)
         col=1 # start from column 1
         row=3 # start from row 3 
         
