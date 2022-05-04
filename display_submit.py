@@ -24,7 +24,7 @@ NextPage = tk.Button(
     my_w, 
     text="Next Page", font=('Sans', 18, 'bold'), padx=10, pady=10,
     
-    command=nextPage
+    command=lambda: nextPage()
     )
 NextPage.place(relx=0.6, rely=0.95, anchor=CENTER)
 

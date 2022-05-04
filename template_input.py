@@ -26,10 +26,10 @@ def templateinput(vision):
         row=3 # start from row 3 
         vision.set_good_image(filename)  
 
-    l1 = tk.Label(my_w,text='Upload Template Image',width=30,font=my_font1) 
+    l1 = tk.Label(my_w,text='Upload Template Image',width=30,font=my_font1,bg= '#DFDDD1') 
     l1.place(relx=0.5, rely=0.1, anchor=CENTER) 
     b1 = tk.Button(my_w, text='Upload Files', font=('Sans', 22, 'bold'), padx=50, pady=20,command = lambda:upload_file())
-    b1.place(relx=0.5, rely=0.5, anchor=CENTER)
+    b1.place(relx=0.4, rely=0.5, anchor=CENTER)
 
     NextPage = tk.Button(my_w, text="Next Page", font=('Sans', 22, "bold"), padx=50, pady=20,command= lambda:nextPage())
     NextPage.place(relx=.75, rely=0.5, anchor=CENTER)
