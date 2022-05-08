@@ -37,7 +37,7 @@ def resultdisplay(vision):
             start.place(relx=0.7, rely=0.7, anchor=CENTER)
         # window will display pass if vision_system passes "pass" result
         else:
-            win.geometry("700x350")
+            win.geometry("1000x900")
             # green
             win['background'] = '#00FF00'
             win.title("Result")

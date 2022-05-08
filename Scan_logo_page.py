@@ -77,7 +77,7 @@ def scanlogopage(vision):
     
     PrevPage = tkinter.Button(
         ws,
-        text="Previous Page", font=('Sans', 18, BOLD), padx=10, pady=10,
+        text="Home", font=('Sans', 18, BOLD), padx=10, pady=10,
         command=prevPage
     )
     PrevPage.place(relx=0.4, rely=0.6, anchor=CENTER)
