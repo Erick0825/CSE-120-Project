@@ -27,7 +27,7 @@ def resultdisplay(vision):
             # red
             win['background'] = '#FF0000'
             win.title("Result")
-            msg = Label(win, text="Fail", font=('Sans', 72, BOLD))
+            msg = Label(win, text="Fail", font=('Sans', 72, BOLD),bg= '#FF0000')
             msg.place(relx=0.5, rely=0.4, anchor=CENTER)
             # camera page button
             camera = tk.Button(win, text="Scan Another Image", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
@@ -41,7 +41,7 @@ def resultdisplay(vision):
             # green
             win['background'] = '#00FF00'
             win.title("Result")
-            msg = Label(win, text="Pass", font=('Sans', 72, BOLD))
+            msg = Label(win, text="Pass", font=('Sans', 72, BOLD),bg='#00FF00')
             msg.place(relx=0.5, rely=0.4, anchor=CENTER)
 
             camera = tk.Button(win, text="Scan Another Image", font=('Sans', 22, BOLD), padx=50, pady=20, command=toCam)
